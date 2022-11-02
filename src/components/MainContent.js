@@ -1,22 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
 import star from './assets/star.png'
+
+
+const rates = [1,2,3,4,5];
+
+
 function MainContent(props) {
+    // const [choosen, setChoosen] = useState()
+    function handleClick(items){
+        return items
+    };
+        
+    
   return (
     <DivCard>
         <Image src={star} alt="Logo" />;
-        <H1>How did we do?</H1>
+        <H1>How did we do? </H1>
         <P>Please let us know how we did with your support request. 
             All feedback is appreciated to help us improve our offering!</P>
-        <Rate>{rates.map((item)=> <Circle>{item}</Circle> )} </Rate>
-        <Button type={props.type}>Submit</Button>
+        <Rate>{rates.map((item)=> <Circle key={item} onClick={()=>(handleClick(item))} 
+        type='button' >{item}</Circle> )} </Rate>
+        <Button type="submit">Submit</Button>
     </DivCard>
   )
 }
 
 export default MainContent
 
-const rates = [1,2,3,4,5];
+
 
 const DivCard = styled.div`
     max-width: 412px;
@@ -60,7 +72,7 @@ const Rate = styled.div`
         margin-top: 30px;
     }
 `;
-const Circle = styled.div`
+const Circle = styled.button`
     background: #262E38;
     width: 42px;
     height: 42px;
@@ -75,6 +87,7 @@ const Circle = styled.div`
     letter-spacing: 0.20000000298023224px;
     text-align: center;
     color: #7C8798;
+    border: none;
     &:hover{
         color: #FFFFFF;
         background: #7C8798;
