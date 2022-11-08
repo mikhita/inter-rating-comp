@@ -7,7 +7,6 @@ const rates = [1,2,3,4,5];
 
 
 function MainContent(props) {
-    // const [choosen, setChoosen] = useState()
     function handleClick(items){
         return items
     };
@@ -19,7 +18,7 @@ function MainContent(props) {
         <H1>How did we do? </H1>
         <P>Please let us know how we did with your support request. 
             All feedback is appreciated to help us improve our offering!</P>
-        <Rate>{rates.map((item)=> <Circle key={item} onClick={()=>(handleClick(item))} 
+        <Rate>{rates.map((item)=> <Circle key={item} onClick={()=>(console.log(handleClick(item)))} 
         type='button' >{item}</Circle> )} </Rate>
         <Button type="submit">Submit</Button>
     </DivCard>
