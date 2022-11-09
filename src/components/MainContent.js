@@ -1,27 +1,40 @@
-import React from 'react'
+import React , {useState} from 'react'
 import styled from 'styled-components'
 import star from './assets/star.png'
+
 
 
 const rates = [1,2,3,4,5];
 
 
 function MainContent(props) {
-    function handleClick(items){
-        return items
-    };
-        
+    const [isActive, setIsActive] = useState();
+
+  const handleClick = (items) => {
+    setIsActive(current => !current)
+    return items
+  };
+  
+    
     
   return (
+ 
+  
     <DivCard>
         <Image src={star} alt="Logo" />;
         <H1>How did we do? </H1>
         <P>Please let us know how we did with your support request. 
             All feedback is appreciated to help us improve our offering!</P>
-        <Rate>{rates.map((item)=> <Circle key={item} onClick={()=>(console.log(handleClick(item)))} 
+        <Rate>{rates.map((item)=> <Circle key={item}  style={{
+          backgroundColor: isActive ? '#FC7614' : '#262E38',
+          color: isActive ? 'White' : '#7C8798',
+        }} onClick={()=>handleClick(item)} 
         type='button' >{item}</Circle> )} </Rate>
+        
         <Button type="submit">Submit</Button>
     </DivCard>
+    
+ 
   )
 }
 
@@ -87,7 +100,7 @@ const Circle = styled.button`
     text-align: center;
     color: #7C8798;
     border: none;
-    &:hover{
+    :hover{
         color: #FFFFFF;
         background: #7C8798;
         cursor: pointer;
